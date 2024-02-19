@@ -55,6 +55,11 @@ const Menuitems = [
     href: "/table",
   },
 
+  {
+    title: "Cards",
+    icon: AutoAwesomeMosaicOutlinedIcon,
+    href: "/cards",
+  },
  
 ];
 

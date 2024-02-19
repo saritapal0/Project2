@@ -9,8 +9,8 @@ import ExRadioBox from '../Components/Forms/Radiobox/ExRadioBox';
 import ExSlider from '../Components/Forms/Slider/ExSlider';
 import ExSwitch from '../Components/Forms/Switch/ExSwitch';
 import FormLayouts from '../Components/Forms/FormLayouts/FormLayouts';
- import Table from '../Components/table/Table';
-
+import Table from '../Components/table/Table';
+import ExCards from '../Components/Forms/Cards/ExCards'
 
     const routes = createBrowserRouter(
         createRoutesFromElements(
@@ -25,6 +25,8 @@ import FormLayouts from '../Components/Forms/FormLayouts/FormLayouts';
          <Route path='/switch'element={<ExSwitch/>}/>
          <Route path='/form'element={<FormLayouts/>}/>
          <Route path='/table' element={<Table/>}/>
+         <Route path='/cards' element={<ExCards/>}/>
+         
          
         </Route>
         
