@@ -1,26 +1,84 @@
-import React from 'react'
-import { Card, CardContent, Box, Typography } from "@mui/material";
+import React from "react";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  FormControl,
+  MenuItem,
+  Select,
+} from "@mui/material";
 
+import ExTable from "../../Dashboard-Component/ExTable";
 
-const Table=( )=> {
+const Product = () => {
+  const [age, setAge] = React.useState("10");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
-    <Box>
-      <Card variant="outlined">
-        <CardContent>
-          <Typography variant="h3">Basic Table</Typography>
+    <Card variant="outlined">
+      <CardContent>
+        <Box
+          sx={{
+            display: {
+              sm: "flex",
+              xs: "block",
+            },
+            alignItems: "flex-start",
+          }}
+        >
+          <Box>
+            <Typography
+              variant="h3"
+              sx={{
+                marginBottom: "0",
+              }}
+              gutterBottom
+            >
+              Product Performance
+            </Typography>
+          </Box>
+
           <Box
             sx={{
-              overflow: {
-                xs: "auto",
-                sm: "unset",
+              marginLeft: "auto",
+              mt: {
+                lg: 0,
+                xs: 2,
               },
             }}
           >
-          <h1>Table</h1>
+            <FormControl variant="standard" sx={{ minWidth: 120 }}>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={age}
+                onChange={handleChange}
+                label="Age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>March 2021</MenuItem>
+                <MenuItem value={20}>April 2021</MenuItem>
+                <MenuItem value={30}>Jun 2021</MenuItem>
+              </Select>
+            </FormControl>
           </Box>
-        </CardContent>
-      </Card>
-    </Box>
+        </Box>
+        <Box
+          sx={{
+            overflow: "auto",
+            mt: 3,
+          }}
+        >
+          <ExTable />
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
-export default Table;
+
+export default Product;

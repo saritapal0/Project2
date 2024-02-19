@@ -9,7 +9,7 @@ import {
   Select,
 } from "@mui/material";
 
-import ExTable from "../Dashboard-Component/ExTable";
+import ExTable from "../../../Components/Forms/Table/Table";
 
 const Product = () => {
   const [age, setAge] = React.useState("10");
