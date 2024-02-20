@@ -11,7 +11,9 @@ import ExSwitch from '../Components/Forms/Switch/ExSwitch';
 import FormLayouts from '../Components/Forms/FormLayouts/FormLayouts';
 import Table from '../Components/table/Table';
 import ExCards from '../Components/Forms/Cards/ExCards'
-import Cards from '../Components/Forms/Cards/ExCards'
+
+
+
 
     const routes = createBrowserRouter(
         createRoutesFromElements(
@@ -27,7 +29,8 @@ import Cards from '../Components/Forms/Cards/ExCards'
          <Route path='/form'element={<FormLayouts/>}/>
          <Route path='/table' element={<Table/>}/>
          <Route path='/cards' element={<ExCards/>}/>
-         <Route path='/cards:carId' element={<Cards/>}/>
+         
+        
          
          
         </Route>
