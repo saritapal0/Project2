@@ -8,11 +8,17 @@ import SwitchLeftOutlinedIcon from '@mui/icons-material/SwitchLeftOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
 
-const Menuitems = [
+
+const active = true;
+
+
+const Data = [
   {
     title: "Dashboard",
     icon: DashboardOutlinedIcon,
     href: "/dashboard",
+    visible: active,
+   
   },
   {
     title: "Autocomplete",
@@ -28,6 +34,7 @@ const Menuitems = [
     title: "Checkbox",
     icon: AssignmentTurnedInOutlinedIcon,
     href: "/checkbox",
+    visible: active,
   },
   {
     title: "Radio",
@@ -38,6 +45,7 @@ const Menuitems = [
     title: "Slider",
     icon: SwitchCameraOutlinedIcon,
     href: "/slider",
+    visible: active,
   },
   {
     title: "Switch",
@@ -53,14 +61,22 @@ const Menuitems = [
     title: "Table",
     icon: AutoAwesomeMosaicOutlinedIcon,
     href: "/table",
+    visible: active,
   },
 
   {
     title: "Cards",
     icon: AutoAwesomeMosaicOutlinedIcon,
     href: "/cards",
+    visible: active,
+    
   },
+  
  
 ];
+
+const Menuitems = Data.filter((item)=>item.visible)
+
+
 
 export default Menuitems;
