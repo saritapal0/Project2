@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState,useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 import { addTodo } from '../Features/todo/TodoSlice'
 
 
 export default function Addtodo() {
     const [input,setInput] = useState('')
-    const [dispatch] = useDispatch()
+    const dispatch = useDispatch()
     const addTodoHnadler = (e) =>{
         e.preventDefault()
         dispatch(addTodo(input))

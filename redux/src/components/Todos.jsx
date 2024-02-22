@@ -1,5 +1,5 @@
 import React from 'react'
-import { UseSelector,useDispatch, useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { removeTodo } from '../Features/todo/TodoSlice'
 
 export default function Todos() {
@@ -12,10 +12,16 @@ export default function Todos() {
       <h1>Todos</h1>
       {todos.map((todo)=>(
         <li key = {todo.id}>
-          {todo.tex}
+          {todo.text}
           <button  onClick = {()=>dispatch(removeTodo(todo.id))}>
              x
           </button>
+          <br/>
+        <input type="text" placeholder='Update' />
+          <button>
+             Update
+          </button>
+
         </li>
       ))}
     </div>
