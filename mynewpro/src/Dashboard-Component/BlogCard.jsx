@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography, Button, Grid } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import user1 from "../assets/images/backgrounds/u2.jpg";
 // import user2 from "../assets/images/backgrounds/u3.jpg";
 // import user3 from "../assets/images/backgrounds/u4.jpg";
@@ -32,42 +33,44 @@ import axios from "axios";
 
 
 
-const BlogCard = () => {
-  // const [blogcard,error,loading] = customblogs('urlpath')
-
-  const [blogcard, setBlogCard] = useState([])
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+const BlogCard = () =>{
+  const [blogcard, setBlogData] = useState([])
+  const [loading] = useState('');
+  const [setError] = useState(false);
+  const apiurl = 'https://api.pexels.com/v1/search?query=india';
+  const apikey = 't2IaGGA1Im5dxrwur9s8nBMY6GdBwvVYrpBKPWXzh4KC09QEXzulsud4';
+  const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true)
-        setError(false)
-        const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-        console.log(response.data)
-        setBlogCard(response.data)
-        setLoading(false)
-      }
-      catch (error) {
-        setError(true)
-        setLoading(false)
-      }
-    })()
-  }, [])
+      const fetchData = async () => {
+          try {
+             const response = await axios.get(apiurl, {
+                  headers: {
+                      "Authorization": apikey
+                  }
+              });
 
+              setBlogData(response.data['photos']);
+              console.log(response.data['photos'])
+              setError(response.data['photos'].length === 0);
 
-  if (error) {
-    return (
-      <h1>something wrong</h1>
-    )
-  } else {
-    if (loading) {
-      return (
-        <h1>loading</h1>
-      )
-    }
-  }
+          } catch (error) {
+              console.log('error', error);
+              setError(true);
+              navigate('/NotFound');
+          }
+      }
+
+      fetchData();
+  }, [loading, apikey, navigate]);
+
+  // const handleError = () => {
+  //     setBlogDataNotFound(false);
+  // };
+
+  // const handleCardClick = (photographer) => {
+  //     navigate(`BlogCard/${photographer}`);
+  // };
 
 
   return (
@@ -90,7 +93,7 @@ const BlogCard = () => {
               width: "100%",
             }}
           >
-            <img src={blog.img} alt="img" width="100%" />
+            <img src={blog.src.tiny} alt="img" width="100%" />
             <CardContent
               sx={{
                 paddingLeft: "30px",
@@ -103,7 +106,7 @@ const BlogCard = () => {
                   fontWeight: "500",
                 }}
               >
-                {blog.title}
+                {blog.photographer}
               </Typography>
               <Typography
                 color="textSecondary"
@@ -113,7 +116,7 @@ const BlogCard = () => {
                   mt: 1,
                 }}
               >
-                {blog.subtitle}
+                {blog.alt}
               </Typography>
               <Button
                 variant="contained"
