@@ -19,7 +19,7 @@ export default function Addtodo() {
     <form onSubmit={addTodoHnadler} className='space-x-3 mt-12'>
 
     <input type='text' className='bg-grey-800'
-     placeholder='Enter Todo' value={input}
+    placeholder='Enter Todo' value={input}
     onChange={(e)=>setInput(e.target.value)}/>
 
     <button
