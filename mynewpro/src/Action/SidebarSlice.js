@@ -1,65 +1,67 @@
+
 import { createSlice } from "@reduxjs/toolkit";
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
+import SwitchCameraOutlinedIcon from '@mui/icons-material/SwitchCameraOutlined';
+import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
+
 
 
 const initialState = {
-      MenuItems:[],
+  menuItems: [],
 }
 
-export const sidebarSlice = createSlice({
-    name:"sidebar",
-    initialState,
-    reducers:{
-        setSidebarData:(state,action)=>{
-            state.Sidebar = action.payload
-        }
+export const menuSlice = createSlice({
+  name: "menu",
+  initialState,
+  reducers: {
+    setMenuItems: (state, action) => {
+      state.menuItems = action.payload
     }
+  }
 })
 
-export const {setSidebarData} = sidebarSlice.actions
-export const fetchSidebarData = () => (dispatch)=>{
+export const { setMenuItems } = menuSlice.actions
+export const fetchMenuItems = () => (dispatch) => {
 
   const active = true;
-    const MeniItems =
-        [{
-            title: "Dashboard",
-            icon: DashboardOutlinedIcon,
-            href: "/dashboard",
-            visible: active,
-           
-          },
-          {
-            title: "Checkbox",
-            icon: AssignmentTurnedInOutlinedIcon,
-            href: "/checkbox",
-            visible: active,
-          },
-          {
-            title: "Slider",
-            icon: SwitchCameraOutlinedIcon,
-            href: "/slider",
-            visible: active,
-          },
-          {
-            title: "Table",
-            icon: AutoAwesomeMosaicOutlinedIcon,
-            href: "/table",
-            visible: active,
-          },
-          {
-            title: "Cards",
-            icon: AutoAwesomeMosaicOutlinedIcon,
-            href: "/cards",
-            visible: active,
-            
-          },
-          
+  const menuItems =
+    [{
+      title: "Dashboard",
+      icon: DashboardOutlinedIcon,
+      href: "/dashboard",
+      visible: active,
 
-        ]
-        
-        const MenuItems = Sidebar.filter((item)=>item.visible)
-        dispatch(setSidebarData(MenuItems))
+    },
+    {
+      title: "Checkbox",
+      icon: AssignmentTurnedInOutlinedIcon,
+      href: "/checkbox",
+      visible: active,
+    },
+    {
+      title: "Slider",
+      icon: SwitchCameraOutlinedIcon,
+      href: "/slider",
+      visible: active,
+    },
+    {
+      title: "Table",
+      icon: AutoAwesomeMosaicOutlinedIcon,
+      href: "/table",
+      visible: active,
+    },
+    {
+      title: "Cards",
+      icon: AutoAwesomeMosaicOutlinedIcon,
+      href: "/cards",
+      visible: active,
+
+    },
+    ]
+  const filteredMenuItems = menuItems.filter((item) => item.visible)
+  dispatch(setMenuItems(filteredMenuItems))
 }
 
-export default sidebarSlice.reducer
-
+export default menuSlice.reducer
 

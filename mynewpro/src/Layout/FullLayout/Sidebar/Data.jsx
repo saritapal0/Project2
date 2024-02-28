@@ -75,7 +75,7 @@ const Data = [
  
 ];
 
-const Menuitems = Sidebar.filter((item)=>item.visible)
+const Menuitems = Data.filter((item)=>item.visible)
 
 
 

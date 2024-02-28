@@ -12,10 +12,10 @@ import {
 import { useLocation } from "react-router-dom";
 import { SidebarWidth } from "../../../assets/global/Theme-variable";
 import LogoIcon from "../Logo/LogoIcon";
-import MenuItems from "../../../Action/SidebarSlice";
+import MenuItem from "../../../Action/SidebarSlice";
  import Buynow from "./Buynow";
 import {useDispatch,useSelector} from 'react-redux'
-import { fetchSidebarData } from "../../../Action/SidebarSlice";
+import { fetchMenuItems } from "../../../Action/SidebarSlice";
 
 
 
@@ -36,9 +36,9 @@ const Sidebar = (props) => {
   
    const dispatch = useDispatch();
    useEffect(()=>{
-      dispatch(fetchSidebarData())
+      dispatch(fetchMenuItems())
    },[dispatch])
-  const Sidebar = useSelector((state)=>state.sidebar.Sidebar)
+  const menuItems= useSelector((state)=>state.menu.menuItems)
   
 
   const SidebarContent = (
@@ -55,7 +55,7 @@ const Sidebar = (props) => {
             mt: 4,
           }}
         >
-          {MenuItems.map((item, index) => {
+          {menuItems.map((item,index) => {
             //{/********SubHeader**********/}
 
             return (
