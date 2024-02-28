@@ -1,5 +1,4 @@
-import React from "react";
-import { useLocation } from "react-router";
+import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Box,
@@ -10,10 +9,16 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import { SidebarWidth } from "../../../assets/global/Theme-variable";
 import LogoIcon from "../Logo/LogoIcon";
-import Menuitems from "./Data";
-import Buynow from "./Buynow";
+import MenuItems from "../../../Action/SidebarSlice";
+ import Buynow from "./Buynow";
+import {useDispatch,useSelector} from 'react-redux'
+import { fetchSidebarData } from "../../../Action/SidebarSlice";
+
+
+
 
 const Sidebar = (props) => {
   const [open, setOpen] = React.useState(true);
@@ -28,6 +33,13 @@ const Sidebar = (props) => {
       setOpen(index);
     }
   };
+  
+   const dispatch = useDispatch();
+   useEffect(()=>{
+      dispatch(fetchSidebarData())
+   },[dispatch])
+  const Sidebar = useSelector((state)=>state.sidebar.Sidebar)
+  
 
   const SidebarContent = (
     <Box sx={{ p: 3, height: "calc(100vh - 40px)" }}>
@@ -43,7 +55,7 @@ const Sidebar = (props) => {
             mt: 4,
           }}
         >
-          {Menuitems.map((item, index) => {
+          {MenuItems.map((item, index) => {
             //{/********SubHeader**********/}
 
             return (
