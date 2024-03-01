@@ -12,8 +12,7 @@ import {
 import { useLocation } from "react-router-dom";
 import { SidebarWidth } from "../../../assets/global/Theme-variable";
 import LogoIcon from "../Logo/LogoIcon";
-import MenuItem from "../../../Action/SidebarSlice";
- import Buynow from "./Buynow";
+import Buynow from "./Buynow";
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchMenuItems } from "../../../Action/SidebarSlice";
 

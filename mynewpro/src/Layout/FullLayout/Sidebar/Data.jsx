@@ -71,8 +71,7 @@ const Data = [
     visible: active,
     
   },
-  
- 
+
 ];
 
 const Menuitems = Data.filter((item)=>item.visible)
