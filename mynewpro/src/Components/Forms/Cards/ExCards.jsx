@@ -42,6 +42,8 @@ const ExCard = () => {
   const error = useSelector(selectError);
   const newsData = useSelector(selectNewsData);
   const [News,setNews]=useState(false)
+  const [isCardClicked,setisCardClicked] = useState(false)
+  
   
 
   useEffect(() => {
@@ -58,6 +60,7 @@ const ExCard = () => {
   const handleCardClick = () => {
    dispatch(fetchNewsData())
    setNews(true)
+   setisCardClicked(true)
   };
 
   if (status === "loading") {
@@ -97,27 +100,20 @@ const ExCard = () => {
           <p>Sorry, no results were found for the search term.</p>
         </div>
       ) : (
-        movieData.map((photo) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={photo.id}>
-            <MovieCard photographer={photo.photographer} url={photo.src.tiny} onClick={handleCardClick} />
-            
-           </Grid>
+       (isCardClicked ? newsData : movieData).map((item) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item.id || item.newsId}>
+              <MovieCard
+                photographer={isCardClicked ? item.newsTitle : item.photographer}
+                url={isCardClicked ? item.mediaPath : item.src.tiny}
+                onClick={handleCardClick}
+              />
+            </Grid>
+           
         ))
       )}
     </Grid>
 
-    {newsData && News &&   (
-      <div>
-       
-        {newsData.map((newsItem) => (
-          <div key={newsItem.newsId}>
-            <h3>{newsItem.newsTitle}</h3>
-            {newsItem.mediaPath && <img src={newsItem.mediaPath} alt={newsItem.newsTitle} style={{ maxWidth: "100%", height: "auto" }} />}
-          <p>{newsItem.newsInfo}</p>
-          </div>
-        ))}
-      </div>
-    )}
+   
   </div>
 );
 };

@@ -12,6 +12,9 @@ import FormLayouts from '../Components/Forms/FormLayouts/FormLayouts';
 import Table from '../Components/table/Table';
 import ExCards from '../Components/Forms/Cards/ExCards'
 import MyCard from '../Components/Forms/MyCards/MyCard'
+import ExOverview from '../Components/Overview/ExOverview';
+// import BasicCards from '../Components/Overview/BasicCards';
+
 
 
 
@@ -30,6 +33,10 @@ import MyCard from '../Components/Forms/MyCards/MyCard'
          <Route path='/table' element={<Table/>}/>
          <Route path='/cards' element={<ExCards/>}/>
          <Route path='/mycard' element={<MyCard/>}/>
+         <Route path='/overview' element={<ExOverview/>}/>
+         {/* <Route path='/basiccards' element={<BasicCards/>}/> */}
+
+         
         
          
          

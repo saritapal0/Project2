@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import TimelapseRoundedIcon from '@mui/icons-material/TimelapseRounded';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import SwitchCameraOutlinedIcon from '@mui/icons-material/SwitchCameraOutlined';
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
@@ -31,6 +32,12 @@ export const fetchMenuItems = () => (dispatch) => {
       href: "/dashboard",
       visible: active,
 
+    },
+    {
+      title: "Overview",
+      icon: TimelapseRoundedIcon,
+      href: "/overview",
+      visible: active,
     },
     {
       title: "Checkbox",
