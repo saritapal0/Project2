@@ -20,7 +20,7 @@ import ExOverview from '../Components/Overview/ExOverview';
 
     const routes = createBrowserRouter(
         createRoutesFromElements(
-        <Route path='/' element={<FullLayout/>}>
+         <Route path='/' element={<FullLayout/>}>
          <Route index element={<Dashboard/>}/>
          <Route path='/dashboard'element={<Dashboard/>}/> 
          <Route path='/autoComplete'element={<ExAutoComplete/>}/>
